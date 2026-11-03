@@ -1,14 +1,106 @@
 
- class="tag">MODULE 06A</div><h2>Dynamic Dribbling</h2><p>Combine changes of direction, rhythm and speed.</p></article>
-      <article><div class="tag">MODULE 06B</div><h2>Individual Creativity</h2><p>Practise creative actions and 1v1 solutions.</p></article>
-      <article><div class="tag">MODULE 07A</div><h2>Explosive Power</h2><p>Build lower-body explosiveness for attacking actions.</p></article>
-      <article><div class="tag">MODULE 07B</div><h2>Sprint Work</h2><p>Acceleration and sprint work: follow the programme instructions.</p></article>
-    </div>
-  </section>
-
-  <section class="section note">
-    <strong>TRAINING CONTENT</strong>
-    <p>Video lessons and the downloadable programme will appear here when the media library is connected.</p>
-  </section>
-  <footer>© N
-   
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10120f">
+<title>NIKO FOOTBALL LAB</title>
+<style>
+:root{--bg:#10120f;--panel:#191d18;--lime:#c6ff35;--white:#f5f7f1;--muted:#a3aa9c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--white);font-family:Arial,Helvetica,sans-serif}
+header{padding:28px 20px 20px;border-bottom:1px solid #30362b}
+.wrap{max-width:900px;margin:auto}
+.logo{font-size:13px;font-weight:900;letter-spacing:3px;color:var(--lime)}
+h1{font-size:clamp(32px,7vw,56px);line-height:1;margin:18px 0 10px;font-weight:900}
+h1 span{color:var(--lime)}
+.subtitle{color:var(--muted);font-size:12px;letter-spacing:2px;font-weight:bold}
+main{padding:28px 20px}
+.intro{background:var(--panel);padding:22px;border-left:4px solid var(--lime);margin-bottom:30px}
+.intro strong{color:var(--lime);font-size:12px;letter-spacing:2px}
+.intro p{color:#d4d9ce;line-height:1.6;margin-bottom:0;font-size:14px}
+.section-title{font-size:13px;letter-spacing:2px;color:var(--lime);margin:28px 0 15px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid #30362b;padding:20px;cursor:pointer;transition:.2s;min-height:145px}
+.card:hover{border-color:var(--lime);transform:translateY(-2px)}
+.tag{font-size:11px;letter-spacing:2px;color:var(--lime);font-weight:bold}
+.card h2{font-size:19px;margin:15px 0 8px}
+.card p{font-size:13px;color:var(--muted);line-height:1.5;margin:0}
+.arrow{color:var(--lime);font-size:20px;margin-top:12px}
+#detail{display:none}
+.back{background:none;border:1px solid var(--lime);color:var(--lime);padding:12px 18px;font-weight:bold;cursor:pointer;margin-bottom:25px}
+.detail-panel{background:var(--panel);padding:24px;border:1px solid #30362b}
+.detail-panel h2{font-size:30px;margin:12px 0}
+.detail-panel p{color:#c5cbbf;line-height:1.7}
+.focus{border-left:3px solid var(--lime);padding:12px 16px;margin-top:22px;background:#22271e}
+.video{margin-top:24px;background:#090a08;border:1px dashed #59604e;padding:35px 15px;text-align:center;color:var(--muted)}
+.video strong{display:block;color:var(--lime);margin-bottom:10px}
+footer{border-top:1px solid #30362b;padding:25px 20px;text-align:center;color:#788071;font-size:11px;letter-spacing:2px}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div class="logo">NIKO FOOTBALL LAB</div>
+<h1>ATTACKING PLAYER<br><span>DEVELOPMENT.</span></h1>
+<div class="subtitle">28-DAY TECHNICAL TRAINING PROGRAMME</div>
+</div></header>
+<main class="wrap">
+<div id="home">
+<div class="intro">
+<strong>TRAIN WITH PURPOSE.</strong>
+<p>A structured technical programme for wingers, forwards and attacking midfielders. Develop your ball mastery, first touch, dribbling, creativity and explosive movement.</p>
+</div>
+<div class="section-title">YOUR TRAINING MODULES / 01–09</div>
+<div class="grid" id="modules"></div>
+</div>
+<div id="detail">
+<button class="back" onclick="goBack()">← BACK TO MODULES</button>
+<div class="detail-panel">
+<div class="tag" id="dtag"></div>
+<h2 id="dtitle"></h2>
+<p id="ddesc"></p>
+<div class="focus"><strong style="color:var(--lime)">TRAINING FOCUS</strong><p id="dfocus"></p></div>
+<div class="video"><strong>VIDEO LESSON</strong>Training video will be available here soon.</div>
+</div>
+</div>
+</main>
+<footer>© NIKO FOOTBALL LAB · ATTACKING PLAYER DEVELOPMENT</footer>
+<script>
+const data=[
+["MODULE 01","Ball Mastery","Improve close control, coordination and confidence on the ball.","Ball control, touches, rhythm and coordination."],
+["MODULE 02","Passing & First Touch","Develop accurate passing and a clean first touch under pressure.","Passing technique, receiving and controlling the ball."],
+["MODULE 03","Turns, Receiving & Acceleration","Learn to receive, turn and accelerate into space.","Body orientation, turning technique and explosive first steps."],
+["MODULE 04","Aerial Control","Improve your ability to control balls played in the air.","First contact, cushioning and aerial ball control."],
+["MODULE 05","Aerial Passing","Develop accuracy and coordination when passing aerial balls.","Timing, technique and controlled aerial passing."],
+["MODULE 06A","Dynamic Dribbling","Combine changes of direction, rhythm and speed.","Dribbling, body feints and changes of pace."],
+["MODULE 06B","Individual Creativity","Practise creative actions and 1v1 solutions.","Creativity, confidence and attacking decisions."],
+["MODULE 07A","Explosive Power","Build lower-body explosiveness for attacking actions.","Jumps, power development and explosive movement."],
+["MODULE 07B","Sprint Work","Improve acceleration and sprint performance.","Acceleration mechanics and sprint technique."]
+];
+const grid=document.getElementById("modules");
+data.forEach((m,i)=>{
+const card=document.createElement("article");
+card.className="card";
+card.innerHTML=`<div class="tag">${m[0]}</div><h2>${m[1]}</h2><p>${m[2]}</p><div class="arrow">↗</div>`;
+card.onclick=()=>openModule(i);
+grid.appendChild(card);
+});
+function openModule(i){
+const m=data[i];
+document.getElementById("home").style.display="none";
+document.getElementById("detail").style.display="block";
+document.getElementById("dtag").textContent=m[0];
+document.getElementById("dtitle").textContent=m[1];
+document.getElementById("ddesc").textContent=m[2];
+document.getElementById("dfocus").textContent=m[3];
+window.scrollTo(0,0);
+}
+function goBack(){
+document.getElementById("detail").style.display="none";
+document.getElementById("home").style.display="block";
+window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
